@@ -1,6 +1,11 @@
 <script>
   import { onMount } from 'svelte';
   import interact from 'interactjs';
+  import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
+  let position = { x: 0, y: 0 };
+  let name = 'Title';
+  let value = '';
 
   const dragMoveListener = (event) => {
     var target = event.target;
@@ -15,12 +20,32 @@
     inertia: true,
     listeners: {
       move: dragMoveListener,
-      end(event) {},
+      end(event) {
+        var target = event.target;
+        position.x = target.getAttribute('data-x');
+        position.y = target.getAttribute('data-y');
+        value = target.childNodes[2].innerText;
+        dispatch('message', { ...position, name, value });
+      },
     },
   });
 </script>
-<span contenteditable="true" class="item">hello</span>
+<div class="item">
+  <div class="title">Title</div>
+  <span contenteditable="true">hello</span>
+</div>
 <style>
+  .title {
+    margin-top: -1rem;
+    position: absolute;
+    font-size: 0.6rem;
+    top: 0;
+    left: 0;
+    background: #01579b;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
   .item:hover {
     outline: 1px dashed #ef9a9a;
   }

@@ -10,7 +10,7 @@
 <main>
   <ToolBar on:message="{handleMessage}"></ToolBar>
   {#each boxes as box}
-    <TextBox>{box}</TextBox>
+    <TextBox on:message={el => console.log(el)}>{box}</TextBox>
   {/each}
 </main>
 <style>
