@@ -24,14 +24,14 @@
         var target = event.target;
         position.x = target.getAttribute('data-x');
         position.y = target.getAttribute('data-y');
-        value = target.childNodes[2].innerText;
+        value = target.childNodes[target.childNodes.length - 1].innerText;
         dispatch('message', { ...position, name, value });
       },
     },
   });
 </script>
 <div class="item">
-  <div class="title">Title</div>
+  <!-- <div class="title">Title</div> -->
   <span contenteditable="true">hello</span>
 </div>
 <style>
