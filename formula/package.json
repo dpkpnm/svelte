@@ -4,7 +4,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public --single --dev --port 5001"
+    "start": "sirv public"
   },
   "devDependencies": {
     "firebase": "^7.19.1",
@@ -19,14 +19,6 @@
     "sveltefire": "^0.1.1"
   },
   "dependencies": {
-    "dropzone": "^5.7.2",
-    "interactjs": "^1.9.22",
-    "pspdfkit": "^2020.4.2",
-    "shortid": "^2.2.15",
-    "svelte-dropzone": "^1.0.6",
-    "svelte-moveable": "^0.9.3",
-    "svelte-pdf": "^1.0.6",
-    "uuid": "^8.3.0",
-    "uuid4": "^2.0.2"
+    "pspdfkit": "^2020.5.0"
   }
 }

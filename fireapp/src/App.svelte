@@ -1,21 +1,12 @@
 <script>
-  import {
-    FirebaseApp,
-    User,
-    Doc,
-    Collection,
-    UploadTask,
-    StorageRef,
-  } from "sveltefire";
-  import PdfViewer from "svelte-pdf";
+  import { FirebaseApp, User, Doc, UploadTask } from "sveltefire";
   import firebase from "firebase/app";
   import "firebase/firestore";
   import "firebase/storage";
   import "firebase/auth";
-  import "firebase/performance";
-  import "firebase/analytics";
-  import shortid from 'shortid';
+  import shortid from "shortid";
   import Upload from "./Upload.svelte";
+  import PSPDFKit from "./PSPDFKit.svelte";
 
   let firebaseConfig = {
     apiKey: "AIzaSyBMu2ssMOLZnUA_kVRYQoVK8ujPUMpuUlc",
@@ -32,27 +23,33 @@
   let path = "2.pdf";
   let file;
   let db;
-  const init = () => { db = firebase.firestore();}
-  const getExtension = fileName => fileName ? fileName.substr(fileName.lastIndexOf('.') + 1):'';
-  const uploadFile = ({detail}) => {
+  let errorMsg = "";
+  const LICENSE_KEY =
+    "wwh0n-lV5SBk8FvT1LY2G15EgHqEEdiICSsvZur6ivQ9FpOyMz0Lq9tQyUmnFKKi6wbINNhaBRJOdt9T9zsVQFCNZVfJpfr88GaFajigQMkiyvLmPqess1AwzFUeq3LhQRngItZOBS17b7ZHeWIRJTItmrFBBq4xXZKVMx2IcjHdMFSdm6Gy0i9vdIAg7i0e70U96wHvxJW5QNAcWHGYzPkZ8btKW-h-Zv_uQ3iV2-TJqq58-nLRTn6zFMM1fd1Hh3dq9-tSoHSxSel1huX1j5gPlQNwtBf5l6Iw4Bz94Ty1JhQ9G_thTeAnhQkDu9CcfGnSofLpdMfV7OPKTORF_9kzS9-_C04baxdLHUWJC7eo44iTR1u8VtwxSyGo9zu3Hm3EuoXsOYqs3VpMKPfUq2Obvi6b0l_eFxbvfI7NttgaXP9wxJ7uMSetGn8PMkw5";
+  const init = () => {
+    db = firebase.firestore();
+  };
+  const getExtension = (fileName) =>
+    fileName ? fileName.substr(fileName.lastIndexOf(".") + 1) : "";
+  const uploadFile = ({ detail }) => {
     file = detail.files[0];
     path = `${shortid()}.${getExtension(file.name)}`;
-    db.doc(`forms/${path}`).set({test:1})
-  }
+    db.doc(`forms/${path}`).set({ test: 1 });
+  };
+  const handleClick = (e) => {
+    fields = [...fields, { x: e.offsetX - 5, y: e.offsetY - 10, title: "" }];
+  };
 </script>
 
-<main>
-  <FirebaseApp {firebase} on:initializeApp={init}>
-    <User let:user let:auth> </User>
-    <Upload on:input={uploadFile} />
-    {#if file}
-    <UploadTask {file} {path} let:task let:snapshot let:downloadURL={url} >
-      {100*snapshot.bytesTransferred/snapshot.totalBytes} %
-      <div slot="complete">
-        <PdfViewer {url} />
-      </div>
-      <div slot="fallback">Error</div>
-    </UploadTask>
-    {/if}
+<div style="height: 100vh; width: 100vw">
+  <FirebaseApp {firebase} on:initializeApp="{init}">
+    <User let:user let:auth>hello </User>
   </FirebaseApp>
-</main>
+</div>
+
+<style>
+  .pdfwrapper {
+    position: relative;
+    height: 100%;
+  }
+</style>

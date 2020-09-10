@@ -62,7 +62,7 @@
   on:dragleave|preventDefault="{stopDragging}"
 >
   <slot {dragging}>
-    <div>Drag &amp; Drop your file</div>
+    <div>Upload form</div>
   </slot>
   <input type="file" {multiple} on:input="{onFile(getFilesFromInputEvent)}" />
 </label>
