@@ -4,10 +4,11 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public --single --dev --port 5002"
+    "start": "sirv public --single --dev --port 5001"
   },
   "devDependencies": {
-    "firebase": "^7.5.2",
+    "firebase": "^7.19.1",
+    "prettier-plugin-svelte": "^1.2.1",
     "rollup": "^1.27.9",
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-livereload": "^1.0.0",
@@ -19,6 +20,6 @@
     "sveltefire": "^0.1.1"
   },
   "dependencies": {
-    "pspdfkit": "^2020.5.1"
+    "pspdfkit": "^2020.5.0"
   }
 }

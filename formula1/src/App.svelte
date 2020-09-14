@@ -59,6 +59,7 @@
     </ul>
     </div>
     <div>
+      <PSPDFKIT path={url} />
     </div>
   </FirebaseApp>
 </main>
