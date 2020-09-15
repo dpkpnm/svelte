@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "sirv public --single --dev --port 5002"
+    "dev": "rollup -c -w ",
+    "start": "sirv public -s"
   },
   "devDependencies": {
     "firebase": "^7.5.2",
@@ -19,6 +19,12 @@
     "sveltefire": "^0.1.1"
   },
   "dependencies": {
-    "pspdfkit": "^2020.5.1"
+    "interactjs": "^1.9.22",
+    "pdfjs-dist": "^2.5.207",
+    "shortid": "^2.2.15",
+    "simple-svelte-autocomplete": "^1.1.2",
+    "svelte-material-icons": "^1.0.3",
+    "svelte-pdf": "^1.0.6",
+    "svelte-routing": "^1.4.2"
   }
 }

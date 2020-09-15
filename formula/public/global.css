@@ -6978,3 +6978,31 @@ code {
     vertical-align: bottom;
   }
 }
+
+*[contenteditable="true"]:focus {
+  outline: none;
+}
+.autocomplete {
+  min-width: 120px !important;
+}
+.autocomplete-input {
+  height: 24px;
+  outline: 0;
+  border: 0;
+  background: transparent;
+  color: #81d4fa;
+  padding: 2px 8px !important;
+  font-size: 0.6rem !important;
+  display: inline;
+}
+.autocomplete-list {
+  background: silver;
+  color: white;
+}
+
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}

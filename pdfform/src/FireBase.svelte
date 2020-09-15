@@ -1,5 +1,5 @@
 <script>
-  import firebase from 'firebase/app';
+  import firebase from "firebase/app";
   import "firebase/firestore";
   import "firebase/storage";
   import "firebase/auth";
@@ -14,13 +14,11 @@
     appId: "1:295581344421:web:491d8c9e6a5a1b22da634c",
     measurementId: "G-P78G9NFJK6",
   };
-s
+
   firebase.initializeApp(firebaseConfig);
   const init = () => {
     db = firebase.firestore();
-  }
-
+  };
 </script>
 
-<FirebaseApp {firebase} on:initializeApp={init}>
-</FirebaseApp>
+<FirebaseApp {firebase} on:initializeApp={init} />
